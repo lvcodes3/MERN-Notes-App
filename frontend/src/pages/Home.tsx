@@ -12,6 +12,7 @@ const Home = () => {
   const [notes, setNotes] = useState<NoteInterface[]>([]);
 
   const [notesLoading, setNotesLoading] = useState<boolean>(true);
+
   const [showNotesLoadingError, setShowNotesLoadingError] =
     useState<boolean>(false);
 
@@ -46,7 +47,6 @@ const Home = () => {
       );
     } catch (error) {
       console.error(error);
-      alert(error);
     }
   };
 

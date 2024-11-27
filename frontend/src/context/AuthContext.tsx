@@ -47,7 +47,6 @@ export const AuthContextProvider = ({
     const fetchAuthUser = async () => {
       try {
         const authResponse = await UsersApi.authenticateUser();
-        console.log(authResponse);
         setAuthUser(authResponse);
       } catch (error) {
         if (error instanceof Error) {
