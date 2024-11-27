@@ -55,7 +55,9 @@ export const getNotes: RequestHandler<
   try {
     const notes = await NoteModel.find({
       userId: req.session.userId,
-    }).exec();
+    })
+      .sort({ updatedAt: -1, createdAt: -1 })
+      .exec();
 
     res.status(200).json(notes);
   } catch (error) {
