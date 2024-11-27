@@ -6,7 +6,7 @@ import createHttpError from "http-errors";
 import UserModel from "../models/user";
 
 // REGISTER //
-interface RegisterBody {
+interface RegisterInterface {
   fullname: string;
   email: string;
   password: string;
@@ -21,7 +21,7 @@ const registerSchema = Joi.object({
 export const register: RequestHandler<
   unknown,
   unknown,
-  RegisterBody,
+  RegisterInterface,
   unknown
 > = async (req, res, next) => {
   try {
@@ -64,7 +64,7 @@ export const register: RequestHandler<
 };
 
 // LOGIN //
-interface LoginBody {
+interface LoginInterface {
   email: string;
   password: string;
 }
@@ -77,7 +77,7 @@ const loginSchema = Joi.object({
 export const login: RequestHandler<
   unknown,
   unknown,
-  LoginBody,
+  LoginInterface,
   unknown
 > = async (req, res, next) => {
   try {

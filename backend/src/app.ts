@@ -15,8 +15,6 @@ import notesRoute from "./routes/notes.route";
 const app = express();
 
 // middlewares //
-app.use(express.json());
-app.use(urlencoded({ extended: true }));
 app.use(
   session({
     secret: env.SESSION_SECRET, // secret key used to sign the session ID cookie
@@ -32,6 +30,8 @@ app.use(
     }),
   })
 );
+app.use(express.json());
+app.use(urlencoded({ extended: true }));
 app.use(morgan("dev"));
 
 // routes //

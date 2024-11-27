@@ -56,6 +56,7 @@ export const getNotes: RequestHandler<
     const notes = await NoteModel.find({
       userId: req.session.userId,
     }).exec();
+
     res.status(200).json(notes);
   } catch (error) {
     next(error);
