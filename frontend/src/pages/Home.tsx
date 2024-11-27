@@ -108,7 +108,7 @@ const Home = () => {
         <CreateUpdateNoteModal
           setShowCreateUpdateNoteModal={setShowCreateUpdateNoteModal}
           onNoteSaved={(note) => {
-            setNotes([...notes, note]);
+            setNotes([note, ...notes]);
             setShowCreateUpdateNoteModal(false);
           }}
         />
@@ -121,11 +121,14 @@ const Home = () => {
           setSelectedNote={setSelectedNote}
           setShowCreateUpdateNoteModal={setShowCreateUpdateNoteModal}
           onNoteSaved={(updatedNote) => {
-            setNotes((prevNotes) =>
-              prevNotes.map((note) =>
-                note._id === updatedNote._id ? updatedNote : note
-              )
-            );
+            setNotes((prevNotes) => {
+              // remove the updated note from the array //
+              const filteredNotes = prevNotes.filter(
+                (note) => note._id !== updatedNote._id
+              );
+              // add the updated note to the front of the array //
+              return [updatedNote, ...filteredNotes];
+            });
             setShowCreateUpdateNoteModal(false);
             setSelectedNote(null);
           }}
